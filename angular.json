@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "projects": {
+    "starwars-search": {
+      "projectType": "application",
+      "root": "apps/starwars-search",
+      "sourceRoot": "apps/starwars-search/src",
+      "prefix": "starwars-search",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/starwars-search",
+            "index": "apps/starwars-search/src/index.html",
+            "main": "apps/starwars-search/src/main.ts",
+            "polyfills": "apps/starwars-search/src/polyfills.ts",
+            "tsConfig": "apps/starwars-search/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/starwars-search/src/favicon.ico",
+              "apps/starwars-search/src/assets"
+            ],
+            "styles": ["apps/starwars-search/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/starwars-search/src/environments/environment.ts",
+                  "with": "apps/starwars-search/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "starwars-search:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "starwars-search:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "starwars-search:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/starwars-search/src/**/*.ts",
+              "apps/starwars-search/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/starwars-search"],
+          "options": {
+            "jestConfig": "apps/starwars-search/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "starwars-search-e2e": {
+      "root": "apps/starwars-search-e2e",
+      "sourceRoot": "apps/starwars-search-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/starwars-search-e2e/cypress.json",
+            "tsConfig": "apps/starwars-search-e2e/tsconfig.e2e.json",
+            "devServerTarget": "starwars-search:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "starwars-search:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/starwars-search-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    }
+  },
+  "defaultProject": "starwars-search"
+}

@@ -114,6 +114,147 @@
           }
         }
       }
+    },
+    "ui-search-result": {
+      "projectType": "library",
+      "root": "libs/ui-search-result",
+      "sourceRoot": "libs/ui-search-result/src",
+      "prefix": "starwars-search",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ui-search-result/src/**/*.ts",
+              "libs/ui-search-result/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui-search-result"],
+          "options": {
+            "jestConfig": "libs/ui-search-result/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "starwars-search-elements": {
+      "projectType": "application",
+      "root": "apps/starwars-search-elements",
+      "sourceRoot": "apps/starwars-search-elements/src",
+      "prefix": "starwars-search",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/starwars-search-elements",
+            "index": "apps/starwars-search-elements/src/index.html",
+            "main": "apps/starwars-search-elements/src/main.ts",
+            "polyfills": "apps/starwars-search-elements/src/polyfills.ts",
+            "tsConfig": "apps/starwars-search-elements/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/starwars-search-elements/src/favicon.ico",
+              "apps/starwars-search-elements/src/assets"
+            ],
+            "styles": ["apps/starwars-search-elements/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/starwars-search-elements/src/environments/environment.ts",
+                  "with": "apps/starwars-search-elements/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "starwars-search-elements:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "starwars-search-elements:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "starwars-search-elements:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/starwars-search-elements/src/**/*.ts",
+              "apps/starwars-search-elements/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/starwars-search-elements"],
+          "options": {
+            "jestConfig": "apps/starwars-search-elements/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "starwars-search-elements-e2e": {
+      "root": "apps/starwars-search-elements-e2e",
+      "sourceRoot": "apps/starwars-search-elements-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/starwars-search-elements-e2e/cypress.json",
+            "tsConfig": "apps/starwars-search-elements-e2e/tsconfig.e2e.json",
+            "devServerTarget": "starwars-search-elements:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "starwars-search-elements:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/starwars-search-elements-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

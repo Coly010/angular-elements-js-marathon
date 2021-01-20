@@ -1,0 +1,18 @@
+<div class="container">
+  <search-bar on-search="$ctrl.doSearch(searchTerm)"></search-bar>
+
+  <div ng-if="$ctrl.searching">Searching...</div>
+
+  <div
+    ng-if="$ctrl.searchResults && $ctrl.searchResults.length > 0"
+    class="container-fluid mt-5"
+  >
+    <div class="row" id="results-container">
+      <search-result
+        class="col-3 col-xs-6"
+        ng-repeat="result in $ctrl.searchResults"
+        ng-prop-search_data="result"
+      ></search-result>
+    </div>
+  </div>
+</div>

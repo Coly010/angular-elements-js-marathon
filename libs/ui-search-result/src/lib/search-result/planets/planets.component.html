@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col">
+    <h3>{{ planet.name }}</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    <div class="row">
+      <div class="col-12">
+        <strong>Population</strong>
+      </div>
+      <div class="col-12">{{ planet.population | number }}</div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <strong>Terrain</strong>
+      </div>
+      <div class="col-12">{{ planet.terrain }}</div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="row">
+      <div class="col-12">
+        <strong>Hours in a day</strong>
+      </div>
+      <div class="col-12">{{ planet.rotation_period }} hrs</div>
+      <div class="col-12">
+        <strong>Days in a year</strong>
+      </div>
+      <div class="col-12">{{ planet.orbital_period }} days</div>
+    </div>
+  </div>
+</div>

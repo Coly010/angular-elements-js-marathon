@@ -16,9 +16,12 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "accessToken": "N2I0ZTgzNDMtNzNkNy00ZTdmLWI5OTgtNWY0Y2Y2NGM2Y2YxfHJlYWQtd3JpdGU=",
+        "cacheableOperations": ["build", "test", "lint", "e2e"],
+        "canTrackAnalytics": false,
+        "showUsageWarnings": true
       }
     }
   },
@@ -29,6 +32,16 @@
     "starwars-search-e2e": {
       "tags": [],
       "implicitDependencies": ["starwars-search"]
+    },
+    "ui-search-result": {
+      "tags": []
+    },
+    "starwars-search-elements": {
+      "tags": []
+    },
+    "starwars-search-elements-e2e": {
+      "tags": [],
+      "implicitDependencies": ["starwars-search-elements"]
     }
   }
 }

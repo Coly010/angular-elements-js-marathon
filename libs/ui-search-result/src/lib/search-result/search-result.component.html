@@ -1,0 +1,26 @@
+<div class="p-5 h-100 border">
+  <starwars-search-people
+    *ngIf="isPerson"
+    [person]="searchData"
+  ></starwars-search-people>
+  <starwars-search-films
+    *ngIf="isFilm"
+    [film]="searchData"
+  ></starwars-search-films>
+  <starwars-search-planets
+    *ngIf="isPlanet"
+    [planet]="searchData"
+  ></starwars-search-planets>
+  <starwars-search-species
+    *ngIf="isSpecies"
+    [species]="searchData"
+  ></starwars-search-species>
+  <starwars-search-starships
+    *ngIf="isStarship"
+    [starship]="searchData"
+  ></starwars-search-starships>
+  <starwars-search-vehicles
+    *ngIf="isVehicle"
+    [vehicle]="searchData"
+  ></starwars-search-vehicles>
+</div>

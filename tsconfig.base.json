@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@starwars-search/ui-search-result": [
+        "libs/ui-search-result/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
